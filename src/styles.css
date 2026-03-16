@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --concrete: #d4d4d4;
+  --warning: #ffd600;
+  --orange: #ff6b00;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-400: #a3a3a3;
+  --gray-600: #525252;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--concrete);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility Classes */
+.font-display {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.bg-concrete {
+  background-color: var(--concrete);
+}
+
+.bg-warning {
+  background-color: var(--warning);
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-orange {
+  color: var(--orange);
+}
+
+/* Border utilities */
+.border-6 {
+  border-width: 6px;
+}
+
+/* Shadows */
+.shadow-brutal {
+  box-shadow: 6px 6px 0 var(--black);
+}
+
+.shadow-brutal-sm {
+  box-shadow: 4px 4px 0 var(--black);
+}
+
+.shadow-brutal-lg {
+  box-shadow: 10px 10px 0 var(--black);
+}
+
+/* Noise Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Animations */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.2s ease-out forwards;
+}
+
+/* Pulse animation for in-progress indicator */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-200);
+  border: 3px solid var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--black);
+  border: 2px solid var(--gray-200);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-600);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--warning);
+  color: var(--black);
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 4px solid var(--warning);
+  outline-offset: 2px;
+}
+
+/* Touch improvements */
+@media (hover: none) {
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .border-6 {
+    border-width: 4px;
+  }
+
+  .shadow-brutal {
+    box-shadow: 4px 4px 0 var(--black);
+  }
+
+  .shadow-brutal-lg {
+    box-shadow: 6px 6px 0 var(--black);
+  }
+}
